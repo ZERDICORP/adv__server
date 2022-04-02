@@ -1,3 +1,5 @@
+find . -name *.class -exec rm -rf {} +
+
 main_class_dir="com/adv_server/www"
 
 javac -cp . ${main_class_dir}/Main.java && java -cp . ${main_class_dir}/Main
