@@ -7,10 +7,14 @@
 $ git clone https://github.com/ZERDICORP/adv__server.git
 ```
 
-#### Make sure you have java installed
-> I used version 17.0.3
+#### Make sure you have java & jar installed
 ```
 $ java --version
+openjdk 17.0.3 2022-04-19
+OpenJDK Runtime Environment (build 17.0.3+3)
+OpenJDK 64-Bit Server VM (build 17.0.3+3, mixed mode)
+$ jar --version
+jar 17.0.3
 ```
 
 #### Run the following command
