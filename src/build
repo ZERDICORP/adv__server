@@ -1,0 +1,10 @@
+javac com/adv_server/www/Main.java
+
+mkdir -p ../build
+
+jar -cfe ../build/adv__server.jar com.adv__server.www.Main .
+
+cp -r resources/ ../build/
+
+echo "java -cp adv__server.jar com.adv_server.www.Main" > ../build/run
+chmod +x ../build/run
