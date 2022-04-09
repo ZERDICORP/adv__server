@@ -16,13 +16,21 @@ import constants.Const;
 
 public class GameProcessor implements Runnable
 {
+	private boolean isRunning;
+
+	{
+		isRunning = true;
+	}
+
+	public synchronized void stop() { isRunning = false; }
+
 	/* main game cycle */
 	@Override
 	public void run()
 	{
 		long start = System.currentTimeMillis();
 
-		while (true)
+		while (isRunning)
 		{
 			long now = System.currentTimeMillis();
 			long diff = now - start;

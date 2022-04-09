@@ -41,6 +41,7 @@ public class GameMngr
   private static int timeToNewWave;
 	private static int waveSize;
   private static boolean wave;
+	private static GameProcessor processor;
  
   static
   {   
@@ -49,11 +50,13 @@ public class GameMngr
     enemies = new ArrayList<>();
 
 		waveSize = Const.WAVE_SIZE_STEP;
-
-    waitingForWave();
-
-    new Thread(new GameProcessor()).start();
   }
+
+	private static void startProcessor()
+	{
+		processor = new GameProcessor();
+    new Thread(processor).start();
+	}
 
   public static synchronized boolean serverIsFull() { return players.size() == Const.MAX_PLAYERS; }	
 
@@ -65,7 +68,10 @@ public class GameMngr
 		 */
 
 		if (players.size() == 0)
+		{
 			resetGame();
+			startProcessor();
+		}
 
 		players.add(player);
 	}
@@ -455,6 +461,9 @@ public class GameMngr
 		players.remove(player);
 
 		removeBlocksByPlayerId(id);
+
+		if (players.size() == 0)
+			processor.stop();
 	}
 
 	public static synchronized void removeEnemy(Enemy enemy)
