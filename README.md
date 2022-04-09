@@ -1,6 +1,6 @@
-# adv__server
+# adv__server :space_invader:
 #### A simple multiplayer game created just for fun ([game client](https://github.com/ZERDICORP/adv__client)).
-## How can I raise my server? :space_invader:
+## How can I raise my server? :eyes:
 
 #### Clone repository
 ```
