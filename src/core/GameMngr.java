@@ -109,8 +109,8 @@ public class GameMngr
 					new Packet(player.address(), player.port())
 						.type(PacketType.KICKED_AFK)
 				);
-
-				players.remove(i);
+				
+				removePlayer(player);
 				i--;
 				continue;
 			}
@@ -458,9 +458,14 @@ public class GameMngr
 		if (player == null)
 			return;
 
+		removePlayer(player);
+	}
+
+	public static synchronized void removePlayer(Player player)
+	{
 		players.remove(player);
 
-		removeBlocksByPlayerId(id);
+		removeBlocksByPlayerId(player.id());
 
 		if (players.size() == 0)
 			processor.stop();
